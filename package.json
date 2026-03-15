@@ -1,0 +1,23 @@
+{
+  "name": "cs-3380-discord-bot",
+  "version": "1.0.0",
+  "description": "A smoldering discord bot...",
+  "homepage": "https://github.com/wilkye/cs-3380-discord-bot#readme",
+  "bugs": {
+    "url": "https://github.com/wilkye/cs-3380-discord-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilkye/cs-3380-discord-bot.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "^13.17.1"
+  }
+}
