@@ -62,6 +62,24 @@ function checkWin(board, player) {
     return false;
 }
 
+function isBoardFull(board) {
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === null) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function disableLeftovers(board) {
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === null) {
+            board[i] = " ";
+        }
+    }
+}
+
 const cmd = {
     data: new SlashCommandBuilder()
         .setName("tictac")
