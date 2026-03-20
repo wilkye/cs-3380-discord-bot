@@ -9,6 +9,7 @@ if (!token) {
 }
 
 import pong from "./commands/utility/pong.js"
+import tictac from "./commands/utility/tictac.js"
 
 import { Client, Events, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 
@@ -16,8 +17,14 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 client.commands.set(pong.data.name, pong);
+client.commands.set(tictac.data.name, tictac);
 
 client.on(Events.InteractionCreate, async interaction => {
+    if (interaction.isButton() && interaction.customId.startsWith('ttt_')) {
+        await tictac.handleButton(interaction);
+        return;
+    }
+
     if (!interaction.isChatInputCommand()) return;
     const command = interaction.client.commands.get(interaction.commandName);
 

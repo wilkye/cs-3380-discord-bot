@@ -9,7 +9,10 @@ const guildId = process.env.GUILD_ID;
 const commands = [];
 
 import pong from "./commands/utility/pong.js";
+import tictac from "./commands/utility/tictac.js";
+
 commands.push(pong.data.toJSON());
+commands.push(tictac.data.toJSON());
 
 const rest = new REST().setToken(token);
 
