@@ -93,7 +93,7 @@ function dumbAI(board) {
 
 const cmd = {
     data: new SlashCommandBuilder()
-        .setName("tictac")
+        .setName("game")
         .setDescription("Play tictac toe against the smartest ai..."),
     async execute(interaction) {
         const board = Array(9).fill(null);

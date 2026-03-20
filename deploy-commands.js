@@ -9,14 +9,14 @@ const guildId = process.env.GUILD_ID;
 const commands = [];
 
 import pong from "./commands/utility/pong.js";
-import tictac from "./commands/utility/tictac.js";
+import game from "./commands/utility/tictac.js";
 import help from "./commands/utility/help.js";
 import lorem from "./commands/utility/lorem.js";
 import die from "./commands/utility/die.js";
 import roll from "./commands/utility/roll.js";
 
 commands.push(pong.data.toJSON());
-commands.push(tictac.data.toJSON());
+commands.push(game.data.toJSON());
 commands.push(help.data.toJSON());
 commands.push(lorem.data.toJSON());
 commands.push(die.data.toJSON());
