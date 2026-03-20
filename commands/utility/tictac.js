@@ -80,6 +80,17 @@ function disableLeftovers(board) {
     }
 }
 
+function dumbAI(board) {
+    const emptyCells = [];
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === null) {
+            emptyCells.push(i);
+        }
+    }
+    const randomIndex = Math.floor(Math.random() * emptyCells.length);
+    return emptyCells[randomIndex];
+}
+
 const cmd = {
     data: new SlashCommandBuilder()
         .setName("tictac")
@@ -112,11 +123,35 @@ const cmd = {
 
         board[index] = "X";
 
+        // Player win
         if (checkWin(board, "X")) {
             disableLeftovers(board);
             games.delete(userId);
             await interaction.update({
                 content: "You Win!",
+                components: buildBoard(board),
+            });
+            return;
+        }
+
+        if (isBoardFull(board)) {
+            games.delete(userId);
+            await interaction.update({
+                content: "It's a tie...",
+                components: buildBoard(board),
+            });
+            return;
+        }
+
+        const aiChoice = dumbAI(board);
+        board[aiChoice] = "O";
+
+        // AI Win
+        if (checkWin(board, "O")) {
+            disableLeftovers(board);
+            games.delete(userId);
+            await interaction.update({
+                content: "You Lost to the dumbest of AI's...",
                 components: buildBoard(board),
             });
             return;
