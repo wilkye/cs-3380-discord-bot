@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } from "discord.js";
 
 const games = new Map();
 
@@ -114,7 +114,7 @@ const cmd = {
         if (!board) {
             await interaction.reply({
                 content: "No active game! Use /tictac to start one.",
-                ephemeral: true,
+                flags: MessageFlags.Ephemeral,
             });
             return;
         }

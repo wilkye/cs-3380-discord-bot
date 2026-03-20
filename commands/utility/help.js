@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, MessageFlags } from "discord.js";
 
 const cmd = {
     data: new SlashCommandBuilder()
@@ -11,7 +11,7 @@ const cmd = {
 
         await interaction.reply({
             content: `**Possible commands:**\n${commands.join("\n")}`,
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
         });
     }
 }
