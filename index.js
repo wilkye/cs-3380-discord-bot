@@ -11,6 +11,9 @@ if (!token) {
 import pong from "./commands/utility/pong.js"
 import tictac from "./commands/utility/tictac.js"
 import help from "./commands/utility/help.js";
+import lorem from "./commands/utility/lorem.js";
+import die from "./commands/utility/die.js";
+import roll from "./commands/utility/roll.js";
 
 import { Client, Events, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 
@@ -20,6 +23,9 @@ client.commands = new Collection();
 client.commands.set(pong.data.name, pong);
 client.commands.set(tictac.data.name, tictac);
 client.commands.set(help.data.name, help);
+client.commands.set(lorem.data.name, lorem);
+client.commands.set(die.data.name, die);
+client.commands.set(roll.data.name, roll);
 
 client.on(Events.InteractionCreate, async interaction => {
     if (interaction.isButton() && interaction.customId.startsWith('ttt_')) {
