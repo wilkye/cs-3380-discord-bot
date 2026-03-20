@@ -75,7 +75,7 @@ function isBoardFull(board) {
 function disableLeftovers(board) {
     for (let i = 0; i < board.length; i++) {
         if (board[i] === null) {
-            board[i] = " ";
+            board[i] = "-";
         }
     }
 }
