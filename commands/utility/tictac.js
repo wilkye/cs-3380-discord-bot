@@ -112,6 +112,25 @@ const cmd = {
 
         board[index] = "X";
 
+        if (checkWin(board, "X")) {
+            disableLeftovers(board);
+            games.delete(userId);
+            await interaction.update({
+                content: "You Win!",
+                components: buildBoard(board),
+            });
+            return;
+        }
+
+        if (isBoardFull(board)) {
+            games.delete(userId);
+            await interaction.update({
+                content: "It's a tie...",
+                components: buildBoard(board),
+            });
+            return;
+        }
+
         await interaction.update({
             content: "Your turn (X):",
             components: buildBoard(board),
