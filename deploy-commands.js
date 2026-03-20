@@ -10,9 +10,11 @@ const commands = [];
 
 import pong from "./commands/utility/pong.js";
 import tictac from "./commands/utility/tictac.js";
+import help from "./commands/utility/help.js";
 
 commands.push(pong.data.toJSON());
 commands.push(tictac.data.toJSON());
+commands.push(help.data.toJSON());
 
 const rest = new REST().setToken(token);
 

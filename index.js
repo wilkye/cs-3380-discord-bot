@@ -10,6 +10,7 @@ if (!token) {
 
 import pong from "./commands/utility/pong.js"
 import tictac from "./commands/utility/tictac.js"
+import help from "./commands/utility/help.js";
 
 import { Client, Events, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 
@@ -18,6 +19,7 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 client.commands.set(pong.data.name, pong);
 client.commands.set(tictac.data.name, tictac);
+client.commands.set(help.data.name, help);
 
 client.on(Events.InteractionCreate, async interaction => {
     if (interaction.isButton() && interaction.customId.startsWith('ttt_')) {
