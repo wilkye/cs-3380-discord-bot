@@ -37,6 +37,31 @@ function buildBoard(board) {
     return rows;
 }
 
+function checkWin(board, player) {
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+
+    for (const line of winConditions) {
+        const a = line[0];
+        const b = line[1];
+        const c = line[2];
+
+        if (board[a] === player && board[b] === player && board[c] === player) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 const cmd = {
     data: new SlashCommandBuilder()
         .setName("tictac")
