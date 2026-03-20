@@ -51,7 +51,29 @@ const cmd = {
             content: 'Tic Tac Time! Your turn! (X):',
             components: rows,
         });
-    }
+    },
+
+    async handleButton(interaction) {
+        const userId = interaction.user.id;
+        const board = games.get(userId);
+
+        if (!board) {
+            await interaction.reply({
+                content: "No active game! Use /tictac to start one.",
+                ephemeral: true,
+            });
+            return;
+        }
+
+        const index = parseInt(interaction.customId.split("_")[1]);
+
+        board[index] = "X";
+
+        await interaction.update({
+            content: "Your turn (X):",
+            components: buildBoard(board),
+        });
+    },
 }
 
 export default cmd;
